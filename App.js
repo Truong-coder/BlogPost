@@ -2,11 +2,17 @@ import React from 'react'
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import IndexScreen from "./src/screens/IndexScreen";
-import { BlogProvider } from './src/context/BlogContext';
+import { Provider } from './src/context/BlogContext';
+import ShowScreen from './src/screens/ShowScreen';
+import CreateScreen from './src/screens/CreateScreen';
+import EditScreen from './src/screens/EditScreen';
 
-  const navigator = createStackNavigator(
+const navigator = createStackNavigator(
     {
-      Index: IndexScreen
+      Index: IndexScreen,
+      Show: ShowScreen,
+      Create: CreateScreen,
+      Edot: EditScreen
     },
     {
         // show default screen when start up
@@ -21,9 +27,9 @@ import { BlogProvider } from './src/context/BlogContext';
     //wrap the App inside of our own custom component
   export default () => {
     return(
-      <BlogProvider>
+      <Provider>
         {/* pass App in as BlogPrivider's child  */}
           <App />
-      </BlogProvider>
+      </Provider>
     ); 
   };

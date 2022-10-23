@@ -1,0 +1,23 @@
+# Summary
+
+Date : 2022-10-22 09:37:20
+
+Directory h:\\blog\\src
+
+Total : 2 files,  41 codes, 11 comments, 12 blanks, all 64 lines
+
+Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Languages
+| language | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| JavaScript | 2 | 41 | 11 | 12 | 64 |
+
+## Directories
+| path | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| . | 2 | 41 | 11 | 12 | 64 |
+| context | 1 | 17 | 9 | 8 | 34 |
+| screens | 1 | 24 | 2 | 4 | 30 |
+
+Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
