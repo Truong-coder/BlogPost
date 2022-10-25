@@ -43,7 +43,7 @@ Blog Post is a cross-platform CRUD application built with React Native. CRUD is 
 
 ### 📲 Can I try the app?
 
-Yes! Simply follow instructions below to download the Expo app and scan the QR code below:
+Yes! Simply follow instructions below to download the Expo app and scan the QR code:
 
 Step 1: Download the Expo App on Google play or App store
 
