@@ -18,11 +18,30 @@ const blogReducer = (state, action) => {
             return [ 
                 ...state, 
                 { 
+                    // when new Blog Post is created, it has id, title and content
                     // create id property
                     id: Math.floor(Math.random() * 9999),        
-                    title: `Blog Post #${state.length + 1}`
+                    // title: `Blog Post #${state.length + 1}`
+                    title: action.payload.title,
+                    content: action.payload.content
                 }
             ];
+        case 'edit_blogPost':
+            // map through all of our different blog posts
+           return state.map ((blogPost) =>{
+            //ternary expression
+                return blogPost.id === action.payload.id
+                ? action.payload
+                : blogPost;
+
+            // if (blogPost.id === action.payload.id){
+            //     return action.payload
+            // }
+            // else{
+            //     return blogPost;
+            // }
+
+           }) 
         default:
             return state;    
     }
@@ -30,9 +49,13 @@ const blogReducer = (state, action) => {
 };
 
 const addBlogPost = dispatch => {
-    return () => {
+    return (title, content, callback) => {
         // Anytime someone calls addBlogPost -> dispatch an action object
-        dispatch({ type: 'add_blogPost' })
+        // payload {key, value}
+        dispatch({ type: 'add_blogPost', payload: {title, content} })
+        if(callback){
+            callback();
+        };
     };
     
 };
@@ -44,10 +67,24 @@ const deleteBlogPost = dispatch => {
     }
 }
 
+const editBlogPost = dispatch => {
+    return ( id, title, content, callback ) => {
+        dispatch({ 
+            type: 'edit_blogPost', 
+            payload: {id, title, content} 
+        });
+        if (callback) {
+            callback();
+        };
+       
+    };
+};
+
 export const { Context, Provider } = createDataContext(
     blogReducer, 
-    {addBlogPost, deleteBlogPost},
-    [] // initial state value
+    { addBlogPost, deleteBlogPost, editBlogPost },
+    [{title: 'TEST POST', content: 'TEST CONTENT', id: 1}]
+     // initial state value
     );
 
 // export const BlogProvider = ( {children} ) => {

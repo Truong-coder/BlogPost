@@ -7,14 +7,11 @@ import { AntDesign } from '@expo/vector-icons';
 const IndexScreen = ({ navigation }) => {
     // destructuring
     // data property, addBlogPost callback
-    const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+    const { state, deleteBlogPost } = useContext(Context);
     return(
         <View>
             <Text>This is index screen</Text>
-            <Button 
-                title = "Add Post"
-                onPress={addBlogPost}
-            />
+            
             <FlatList  
                 data = {state} //list of Blog Posts
                 keyExtractor = { blogPost => blogPost.title } //use 'title' as a key
@@ -46,11 +43,11 @@ const IndexScreen = ({ navigation }) => {
  */
 IndexScreen.navigationOptions = ({ navigation }) => {
     return{
-        headerRight: () => {
+        headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Create') }>
                 <AntDesign name="pluscircleo" size={24} color="black" />
             </TouchableOpacity>
-        } 
+        ),
     
     };
 };

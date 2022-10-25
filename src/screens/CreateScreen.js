@@ -1,6 +1,7 @@
-import React, { useContext, useState }from 'react';
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet } from 'react-native';
 import { Context } from '../context/BlogContext';
+import BlogPostForm from '../components/BlogPostForm';
 
 const CreateScreen = ({navigation}) => {
     /**
@@ -8,40 +9,23 @@ const CreateScreen = ({navigation}) => {
      * One to handle the title entry
      * The other handle the content entry
      */
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-
-    return(
-        <View>
-            <Text style = {styles.label}> Enter Title: </Text>
-            {/* 
-            * Tell the Input what the current value is
-            * 'onChangeText' whenever received some new text, use it to update our title state.
-            */}
-            <TextInput style = {styles.input} value = {title} onChangeText ={(text) => setTitle(text)}/>
-            <Text style = {styles.label}> Enter Content: </Text>
-            <TextInput style = {styles.input} value = {content} onChangeText={(text) => setContent(text)}/>
-            <Button 
-                title = "Add Blog Post"
-            /> 
-        </View>
-    );
+    
+    // destructure
+    const { addBlogPost } = useContext(Context);
+    
+    // reuseable component
+    // Formulate some set of props
+    return <BlogPostForm 
+        // anytime the user submits the form, BlogPostForm invoke this on submit prop
+        onSubmit = {(title, content)=> {
+            addBlogPost(title, content, () => navigation.navigate('Index'));
+        }}
+    
+    />;
 };
 
 const styles = StyleSheet.create({
-    input: {
-        fontSize: 18,
-        borderWidth: 2,
-        borderColor: 'black',
-        marginBottom: 15,
-        marginLeft: 5,
-        padding: 5
-    },
-    label: {
-        fontSize: 18,
-        marginBottom: 10,
-        padding: 5
-    }
+   
 });
 
 export default CreateScreen;

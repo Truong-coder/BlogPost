@@ -12,7 +12,7 @@ const navigator = createStackNavigator(
       Index: IndexScreen,
       Show: ShowScreen,
       Create: CreateScreen,
-      Edot: EditScreen
+      Edit: EditScreen
     },
     {
         // show default screen when start up
