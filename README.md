@@ -7,9 +7,15 @@
 
 1. **Clone the repository**
 
-   Via HTTPS: `https://github.com/Truong-coder/BlogPost.git`
+   Via HTTPS: 
+   ```sh 
+   https://github.com/Truong-coder/BlogPost.git
+   ```
 
-   Via SSH: `git@github.com:Truong-coder/BlogPost.git`
+   Via SSH: 
+   ```sh 
+   git@github.com:Truong-coder/BlogPost.git
+   ```
 
 2. **Install the necessary packages.**
 
@@ -34,7 +40,6 @@
 
 Blog Post is a cross-platform CRUD application built with React Native. CRUD is a short term for Create, Read, Update and Delete. In this app, users can create new Blog Post with title and content on it. Each Blog Post can be edited and deleted.
 
-• How to deploy the application: 
 
 ### 📲 Can I try the app?
 
