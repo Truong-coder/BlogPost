@@ -53,10 +53,16 @@ Step 1: Download the Expo App on Google play or App store
 
 Step 2: Scan the QR Code to run on your Mobile devices
 
-![image](https://user-images.githubusercontent.com/81181191/197712828-404768ec-3e79-43ab-9ec0-6669d36d0116.png)
+
+<a>
+<img src="https://user-images.githubusercontent.com/81181191/197712828-404768ec-3e79-43ab-9ec0-6669d36d0116.png" width="250" height="250"/>
+</a>
 
 
 For more detail, click here: https://expo.dev/@truonghp/blog?serviceType=classic&distribution=expo-go
+### <a>
+<img src="https://user-images.githubusercontent.com/81181191/198415258-2f621325-33d1-447d-acca-e10d158fbfb1.png" width="30" height="30"/>
+</a> Click here for API host: https://6a63-42-115-238-249.ap.ngrok.io/blogPosts
 
 ### 👨‍🔬 What are the technologies used?
 
