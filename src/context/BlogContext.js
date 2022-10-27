@@ -1,5 +1,6 @@
 import React, {useReducer} from 'react';
 import createDataContext from './createDataContext';
+import jsonServer from '../api/jsonServer';
 
 /**
  * Context is just about moving infomation
@@ -11,6 +12,12 @@ import createDataContext from './createDataContext';
 
 const blogReducer = (state, action) => {
     switch (action.type) {
+        case 'get_blogPosts':
+            /**
+             * Whenever we get a response back from the API, our assumption is that
+             * the API is always the total source of truth of information inside of our app
+             */
+            return action.payload;
         case 'delete_blogPost':
             return state.filter(blogPost => blogPost.id !== action.payload); 
         
@@ -48,11 +55,26 @@ const blogReducer = (state, action) => {
         
 };
 
+const getBlogPosts = dispatch => {
+    // making a network request
+    return async () => {
+        const response = await jsonServer.get('/blogPosts');
+        // response.data === [{}, {}, {}]
+        // when dispatch, add in all the data that got back from that API
+        // then the 'blogReducer' will capture that data and return it
+
+        dispatch({ type: 'get_blogPosts', payload: response.data })
+    
+    };
+};
+
 const addBlogPost = dispatch => {
-    return (title, content, callback) => {
+    return async (title, content, callback) => {
+        await jsonServer.post('/blogPosts', {title, content});
+    
         // Anytime someone calls addBlogPost -> dispatch an action object
         // payload {key, value}
-        dispatch({ type: 'add_blogPost', payload: {title, content} })
+        // dispatch({ type: 'add_blogPost', payload: {title, content} })
         if(callback){
             callback();
         };
@@ -61,14 +83,18 @@ const addBlogPost = dispatch => {
 };
 const deleteBlogPost = dispatch => {
     // calling dispatch with some objects that's going to describe how we want to change our state object
-    return (id) => {
-        dispatch({ type: 'delete_blogPost', payload: id})
+    return async id => {
+        await jsonServer.delete(`/blogPosts${id}`)
+        dispatch({ type: 'delete_blogPost', payload: id});
 
-    }
+    };
 }
 
 const editBlogPost = dispatch => {
-    return ( id, title, content, callback ) => {
+    return async ( id, title, content, callback ) => {
+        // back tick indicates that wanting to use a template string
+        // second argument is going to be an object with our updated title and content
+        await jsonServer.edit(`/blogPosts${id}`, { title, content });
         dispatch({ 
             type: 'edit_blogPost', 
             payload: {id, title, content} 
@@ -82,8 +108,9 @@ const editBlogPost = dispatch => {
 
 export const { Context, Provider } = createDataContext(
     blogReducer, 
-    { addBlogPost, deleteBlogPost, editBlogPost },
-    [{title: 'TEST POST', content: 'TEST CONTENT', id: 1}]
+    { addBlogPost, deleteBlogPost, editBlogPost, getBlogPosts },
+    // empty array because we have a list of blog posts that are going to be coming back from this API
+    []
      // initial state value
     );
 
