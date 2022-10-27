@@ -66,6 +66,8 @@ Here are some of them:
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
 - [React Native](https://reactnative.dev/)
+- [ngrock](https://ngrok.com)
+- [json-server](https://www.npmjs.com/package/json-server)
 
 # :closed_book: 
 
