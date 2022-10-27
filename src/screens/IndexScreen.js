@@ -43,10 +43,10 @@ const IndexScreen = ({ navigation }) => {
         return () => {
             listener.remove();
         };
-    }, [])
+    }, []);
     return(
         <View>
-            <Text>This is index screen</Text>
+            <Text style = {styles.title}>This is index screen</Text>
             
             <FlatList  
                 data = {state} //list of Blog Posts

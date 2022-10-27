@@ -18,10 +18,10 @@ const blogReducer = (state, action) => {
              * the API is always the total source of truth of information inside of our app
              */
             return action.payload;
-        case 'delete_blogPost':
+        case 'delete_blogPosts':
             return state.filter(blogPost => blogPost.id !== action.payload); 
         
-        case 'add_blogPost':
+        case 'add_blogPosts':
             return [ 
                 ...state, 
                 { 
@@ -33,7 +33,7 @@ const blogReducer = (state, action) => {
                     content: action.payload.content
                 }
             ];
-        case 'edit_blogPost':
+        case 'edit_blogPosts':
             // map through all of our different blog posts
            return state.map ((blogPost) =>{
             //ternary expression
@@ -74,7 +74,7 @@ const addBlogPost = dispatch => {
     
         // Anytime someone calls addBlogPost -> dispatch an action object
         // payload {key, value}
-        // dispatch({ type: 'add_blogPost', payload: {title, content} })
+        dispatch({ type: 'add_blogPosts', payload: {title, content} })
         if(callback){
             callback();
         };
@@ -84,7 +84,7 @@ const addBlogPost = dispatch => {
 const deleteBlogPost = dispatch => {
     // calling dispatch with some objects that's going to describe how we want to change our state object
     return async id => {
-        await jsonServer.delete(`/blogPosts${id}`)
+        await jsonServer.delete(`/blogPosts/${id}`)
         dispatch({ type: 'delete_blogPost', payload: id});
 
     };
@@ -94,9 +94,9 @@ const editBlogPost = dispatch => {
     return async ( id, title, content, callback ) => {
         // back tick indicates that wanting to use a template string
         // second argument is going to be an object with our updated title and content
-        await jsonServer.edit(`/blogPosts${id}`, { title, content });
+        await jsonServer.put(`/blogPosts/${id}`, { title, content });
         dispatch({ 
-            type: 'edit_blogPost', 
+            type: 'edit_blogPosts', 
             payload: {id, title, content} 
         });
         if (callback) {
