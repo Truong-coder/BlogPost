@@ -7,12 +7,12 @@
 
 1. **Clone the repository**
 
-   Via HTTPS: 
+   - Via HTTPS: 
    ```sh 
    https://github.com/Truong-coder/BlogPost.git
    ```
 
-   Via SSH: 
+   - Via SSH: 
    ```sh 
    git@github.com:Truong-coder/BlogPost.git
    ```
@@ -43,13 +43,13 @@ Blog Post is a cross-platform CRUD application built with React Native. CRUD is 
 
 ### 📲 Can I try the app?
 
-Yes! Simply follow instructions below to download the Expo app and scan the QR code below:
+Yes! Simply follow instructions below to download the Expo app and scan the QR code:
 
 Step 1: Download the Expo App on Google play or App store
 
-  -> Click here to download from Google Play: https://play.google.com/store/apps/details?id=host.exp.exponent&hl=vi&gl=US
+  - Click here to download from Google Play: https://play.google.com/store/apps/details?id=host.exp.exponent&hl=vi&gl=US
   
-  -> Click here to download from App Store: https://apps.apple.com/us/app/expo-go/id982107779
+  - Click here to download from App Store: https://apps.apple.com/us/app/expo-go/id982107779
 
 Step 2: Scan the QR Code to run on your Mobile devices
 
