@@ -17,7 +17,7 @@
    git@github.com:Truong-coder/BlogPost.git
    ```
 
-2. **Install the necessary packages.**
+2. **Install the necessary packages**
 
    Go to the main directory and install the necessary packages
 
@@ -26,14 +26,18 @@
    npm install / yarn install
    ```
 
-3. **Start developing.**
+3. **Start developing**
 
    Initiate the project in development mode
 
    ```sh
    npm start
    ```
-
+4. **Run the Database**
+   ```
+   cd jsonserver/
+   npm run db
+   ```
 # :postbox: FAQ
 
 ### 🙋‍ What is Blog Post?
